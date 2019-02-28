@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace ZSZ.Service.Data
 {
     public class MyDbContext:DbContext
     {
+        public static ILog log = LogManager.GetLogger(typeof(MyDbContext));
         public MyDbContext():base("name=connStr")
         {
-            
+            this.Database.Log = (sql) => {
+                log.DebugFormat("EF执行sql语句:" + sql);
+            };
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
