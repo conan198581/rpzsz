@@ -67,6 +67,12 @@ namespace ZSZ.Service
             myDbContext.SaveChanges();
         }
 
+        public int Add(T item)
+        {
+            myDbContext.Set<T>().Add(item);
+            var i = myDbContext.SaveChanges();
+            return i;
+        }
         
         
 

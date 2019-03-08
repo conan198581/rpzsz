@@ -22,9 +22,12 @@ namespace ZSZ.AdminWeb
             ModelBinders.Binders.Add(typeof(string), new TrimToDBCModelBinder());
 
             var containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly).AsImplementedInterfaces().PropertiesAutowired();
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
             Assembly[] assemblies = new Assembly[] { Assembly.Load("ZSZ.Service") };
+            /*
             containerBuilder.RegisterAssemblyTypes(assemblies).Where(type => !type.IsAbstract && typeof(IServiceSupport).IsAssignableFrom(type)).AsImplementedInterfaces().PropertiesAutowired();
+            */
+            containerBuilder.RegisterAssemblyTypes(assemblies).AsImplementedInterfaces().PropertiesAutowired();
             var builder = containerBuilder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder));
 
