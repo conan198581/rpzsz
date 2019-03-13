@@ -102,6 +102,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PermissionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902270613152_InitialCreate.resx">

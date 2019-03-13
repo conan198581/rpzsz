@@ -42,5 +42,43 @@ namespace ZSZ.Service
             dto.CreateDateTime = permissionEntity.CreateTime;
             return dto;
         }
+
+        public void DeletePermission(long id)
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                BaseService<PermissionEntity> baseService = new BaseService<PermissionEntity>(dbContext);
+                baseService.MarkDelete(id);
+            }
+        }
+
+        public PermissionDTO GetById(long id)
+        {
+            using (MyDbContext context = new MyDbContext())
+            {
+                BaseService<PermissionEntity> baseService = new BaseService<PermissionEntity>(context);
+                var entity = baseService.GetById(id);
+                if (entity == null)
+                {
+                    throw new ArgumentException("没有相关对象");
+                }
+                return ToDto(entity);
+            }
+        }
+
+        public void Update(long id, string name, string description)
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                BaseService<PermissionEntity> baseService = new BaseService<PermissionEntity>(dbContext);
+                var entity = baseService.GetById(id);
+                entity.Name = name;
+                entity.Description = description;
+                dbContext.SaveChanges();
+            }
+        }
+
+
+        
     }
 }

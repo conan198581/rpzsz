@@ -1325,7 +1325,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Filters\AdminWebExceptionFilter.cs" />
+    <Compile Include="Filters\JsonNetResult.cs" />
+    <Compile Include="Filters\JsonNetResultFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1429,6 +1432,10 @@
     <Content Include="skin\red\Thumbs.db" />
     <Content Include="skin\yellow\Thumbs.db" />
     <Content Include="Views\Permission\List.cshtml" />
+    <Content Include="Views\Permission\Add.cshtml" />
+    <Content Include="Views\Permission\Edit.cshtml" />
+    <Content Include="Views\Role\List.cshtml" />
+    <Content Include="Views\Role\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

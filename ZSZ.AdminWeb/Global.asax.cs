@@ -19,6 +19,7 @@ namespace ZSZ.AdminWeb
         {
             log4net.Config.XmlConfigurator.Configure();
             GlobalFilters.Filters.Add(new AdminWebExceptionFilter());
+            GlobalFilters.Filters.Add(new JsonNetResultFilter());
             ModelBinders.Binders.Add(typeof(string), new TrimToDBCModelBinder());
 
             var containerBuilder = new ContainerBuilder();

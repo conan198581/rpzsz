@@ -13,6 +13,7 @@ namespace ZSZ.AdminWeb.Filters
         public void OnException(ExceptionContext filterContext)
         {
             log.Error("出现未处理的异常", filterContext.Exception);
+            
         }
     }
 }

@@ -34,9 +34,33 @@ namespace ZSZ.AdminWeb.Controllers
         [HttpPost]
         public ActionResult Add(PermissionAddViewModel viewModel)
         {
-           PermissionSerivce.AddPermission(new DTO.PermissionDTO() { Name = viewModel.Name, Description = viewModel.Description });
+            PermissionSerivce.AddPermission(new DTO.PermissionDTO() { Name = viewModel.Name, Description = viewModel.Description });
             return Json(new AjaxResult<string> { Status = "ok" });
         }
+
+        [HttpPost]
+        public ActionResult Del(long id)
+        {
+            PermissionSerivce.DeletePermission(id);
+            return Json(new AjaxResult<string> { Status = "ok" });
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var permissionDTO = PermissionSerivce.GetById(id);
+            return View(permissionDTO);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(long id, string name, string description)
+        {
+            PermissionSerivce.Update(id, name, description);
+            return Json(new AjaxResult<string> { Status = "ok" });
+
+        }
+        
 
     }
 }
