@@ -1341,6 +1341,8 @@
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
     <Compile Include="Models\PermissionAddViewModel.cs" />
+    <Compile Include="Models\PermissionRoleEditViewModel.cs" />
+    <Compile Include="Models\RoleEditViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1436,6 +1438,7 @@
     <Content Include="Views\Permission\Edit.cshtml" />
     <Content Include="Views\Role\List.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

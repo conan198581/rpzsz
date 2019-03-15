@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,32 @@ namespace ZSZ.Service
                 entity.Name = name;
                 entity.Description = description;
                 dbContext.SaveChanges();
+            }
+        }
+
+        public PermissionDTO[] GetPermissionByRoleId(long roleId)
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                BaseService<RoleEntity> bs = new BaseService<RoleEntity>(dbContext);
+                return bs.GetById(roleId).PermissionEntities.ToList().Select(p => ToDto(p)).ToArray();
+            }
+        }
+
+        public void UpdatePermissionsByRoleId(long roleId, long[] permissionIds)
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                BaseService<RoleEntity> roleBaseService = new BaseService<RoleEntity>(dbContext);
+                var roleEntity = roleBaseService.GetById(roleId);
+                roleEntity.PermissionEntities.Clear();
+                BaseService<PermissionEntity> permissionBaseService = new BaseService<PermissionEntity>(dbContext);
+                var permissionList = permissionBaseService.GetAll().Where(x => permissionIds.Contains(x.Id)).ToArray();
+                foreach (var permissionObj in permissionList)
+                {
+                    roleEntity.PermissionEntities.Add(permissionObj);
+                }
+                dbContext.SaveChanges(); 
             }
         }
 

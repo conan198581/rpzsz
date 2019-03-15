@@ -1,8 +1,7 @@
-﻿@model ZSZ.DTO.PermissionDTO[]
+﻿@model ZSZ.AdminWeb.Models.PermissionRoleEditViewModel
 @{
     Layout = null;
 }
-
 
 <!DOCTYPE HTML>
 <html>
@@ -30,10 +29,11 @@
 <body>
     <div class="pd-20">
         <form action="" method="post" class="form form-horizontal" id="formRoleAdd">
+            <input type="hidden" name="id" value="@Model.RoleDTO.Id" id="id" />
             <div class="row cl">
                 <label class="form-label col-2"><span class="c-red">*</span>角色名称：</label>
                 <div class="formControls col-10">
-                    <input type="text" class="input-text" value="" placeholder="" id="name" name="name" datatype="*4-16" nullmsg="角色名不能为空">
+                    <input type="text" class="input-text" value="@Model.RoleDTO.Name" placeholder="" id="name" name="name" datatype="*4-16" nullmsg="角色名不能为空">
                 </div>
             </div>
             <div class="row cl">
@@ -43,10 +43,10 @@
                         <dd>
                             <dl class="cl permission-list2">
                                 <dd>
-                                    @foreach (var item in Model)
+                                    @foreach(var item in Model.PermissionDTOs)
                                     {
                                         <label class="">
-                                            <input type="checkbox" value="@item.Id" name="permissionIds" id="permissionIds_@item.Id">
+                                            <input type="checkbox" checked="@Model.SelectedPermissionDTOs.Select(x=>x.Id).Contains(item.Id)" value="@item.Id" name="permissionIds" id="permissionIds_@item.Id">
                                             <label id="permissionIds_@item.Id">@item.Name</label>
                                         </label>
                                     }
@@ -74,7 +74,7 @@
             $("#admin-role-save").click(function () {
                 var formData = $("#formRoleAdd").serializeArray();
                 $.ajax({
-                    url: "/role/add",
+                    url: "/role/edit",
                     type: "post",
                     datatype: "json",
                     data: formData,

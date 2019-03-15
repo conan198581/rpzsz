@@ -11,5 +11,8 @@ namespace ZSZ.IService
     {
         RoleDTO[] GetAll();
         RoleDTO GetById(long id);
+        void Add(string name, long[] permissionIds);
+        void UpdateRole(RoleDTO roleDTO);
+        void Del(long id);
     }
 }

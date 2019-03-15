@@ -9,7 +9,7 @@ namespace ZSZ.Service.Entities
     public class RoleEntity:BaseEntity
     {
         public string Name { get; set; }
-        public virtual List<AdminUserEntity> AdminUserEntities { get; set; }
-        public virtual List<PermissionEntity> PermissionEntities { get; set; }
+        public virtual List<AdminUserEntity> AdminUserEntities { get; set; } = new List<AdminUserEntity>();
+        public virtual List<PermissionEntity> PermissionEntities { get; set; } = new List<PermissionEntity>();
     }
 }

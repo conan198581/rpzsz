@@ -15,5 +15,7 @@ namespace ZSZ.IService
         void DeletePermission(long id);
         PermissionDTO GetById(long id);
         void Update(long id, string name, string description);
+        PermissionDTO[] GetPermissionByRoleId(long roleId);
+        void UpdatePermissionsByRoleId(long roleId, long[] permissionIds);
     }
 }
