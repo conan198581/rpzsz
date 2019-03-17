@@ -70,5 +70,14 @@ namespace ZSZ.AdminWeb.Controllers
             RoleService.Del(id);
             return Json(new AjaxResult<string> { Status = "ok" });
         }
+
+		public ActionResult BatchDel(long[] ids)
+		{
+			foreach (var item in ids)
+			{
+				Del(item);
+			}
+			return Json(new AjaxResult<string> { Status = "ok" });
+		}
     }
 }
