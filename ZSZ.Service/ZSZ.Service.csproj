@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminUserService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="CityService.cs" />
     <Compile Include="Data\MyDbContext.cs" />

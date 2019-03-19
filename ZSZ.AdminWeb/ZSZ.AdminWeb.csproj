@@ -1326,6 +1326,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AdminWebExceptionFilter.cs" />
     <Compile Include="Filters\JsonNetResult.cs" />
     <Compile Include="Filters\JsonNetResultFilter.cs" />
@@ -1343,6 +1344,7 @@
     <Compile Include="Models\PermissionAddViewModel.cs" />
     <Compile Include="Models\PermissionRoleEditViewModel.cs" />
     <Compile Include="Models\RoleEditViewModel.cs" />
+    <Compile Include="Models\UserAddViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1439,6 +1441,8 @@
     <Content Include="Views\Role\List.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

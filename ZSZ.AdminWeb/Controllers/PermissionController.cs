@@ -60,6 +60,16 @@ namespace ZSZ.AdminWeb.Controllers
             return Json(new AjaxResult<string> { Status = "ok" });
 
         }
+
+
+        public ActionResult BatchDel(long[] ids)
+        {
+            foreach (var id in ids)
+            {
+                PermissionSerivce.DeletePermission(id);
+            }
+            return Json(new AjaxResult<string> { Status = "ok" });
+        }
         
 
     }

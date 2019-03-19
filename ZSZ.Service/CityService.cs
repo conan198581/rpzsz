@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZSZ.IService;
 using ZSZ.Service.Data;
 using ZSZ.Service.Entities;
+using ZSZ.DTO;
 
 namespace ZSZ.Service
 {
@@ -27,6 +28,24 @@ namespace ZSZ.Service
                 ctx.SaveChanges();
                 return cityEntity.Id;
             }
+        }
+
+        public CityDTO[] GetAll()
+        {
+            using (MyDbContext dbContext = new MyDbContext())
+            {
+                BaseService<CityEntity> baseService = new BaseService<CityEntity>(dbContext);
+                return baseService.GetAll().ToList().Select(x => ToDto(x)).ToArray();
+            }
+        }
+
+        public CityDTO ToDto(CityEntity cityEntity)
+        {
+            CityDTO cityDTO = new CityDTO();
+            cityDTO.Id = cityEntity.Id;
+            cityDTO.Name = cityEntity.Name;
+            cityDTO.CreateDateTime = cityEntity.CreateTime;
+            return cityDTO;
         }
     }
 }

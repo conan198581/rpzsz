@@ -13,7 +13,7 @@ namespace ZSZ.DTO
         public String Email { get; set; }
         public long? CityId { get; set; }
         public String CityName { get; set; }
-        public int LoginErrorTimes { get; set; }
+        public int? LoginErrorTimes { get; set; }
         public DateTime? LastLoginErrorDateTime { get; set; }
     }
 }

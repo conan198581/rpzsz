@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ZSZ.DTO;
 
 namespace ZSZ.IService
 {
@@ -11,6 +11,7 @@ namespace ZSZ.IService
     {
         //加入一个用户，name用户姓名，phoneNum手机号，password密码，email，cityId城市id（null表示总部）
         long AddAdminUser(string name, string phoneNum, string password, string email, long? cityId);
-        //
+
+        AdminUserDTO[] GetAll();
     }
 }
